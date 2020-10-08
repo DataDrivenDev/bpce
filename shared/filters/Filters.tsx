@@ -53,24 +53,23 @@ export default class Filters extends React.PureComponent<FiltersProps> {
         type = data[0],
         val = data[1],
         filters = this.props.app.state.filters,
-        regionList = filters[0],
+        /*regionList = filters[0],
         depList = filters[1],
         sitelist = filters[2],
-        countryList = filters[3],
+        countryList = filters[3],*/
         companyList = filters[4],
-        equipementList = filters[5],
-        functionList = filters[6],
+        equipementList = filters[5];
+        /*functionList = filters[6],
         sectorList = filters[7],
         levelList = filters[8],
         experienceList = filters[9],
         deps = this.props.app.state.departements,
         regs = this.props.app.state.regions,
         nbOfRegChecked = 0,
-        nbOfDepChecked = 0;
+        nbOfDepChecked = 0;*/
 
     switch(type) {
-        case this.minCountryName:
-          
+        /*case this.minCountryName:
           for(i = 0; i < countryList[1].length; i++){
               if(countryList[1][i][0] === val){
                   console.log(countryList);
@@ -112,6 +111,7 @@ export default class Filters extends React.PureComponent<FiltersProps> {
                 }
             }
             break;
+        */
         case this.minCompaName:
             for(i = 0; i < companyList[1].length; i++){
                 if(companyList[1][i][0] === val){
@@ -128,7 +128,7 @@ export default class Filters extends React.PureComponent<FiltersProps> {
                 }
             }
             break;
-        case this.minFunctionName:
+        /*case this.minFunctionName:
             for(i = 0; i < functionList[1].length; i++){
                 if(functionList[1][i][0] === val){
                     functionList[1][i][1] = false;
@@ -209,7 +209,7 @@ export default class Filters extends React.PureComponent<FiltersProps> {
             if(nbOfRegChecked === 0){
                 this.props.app.setState({allLocation: false});
             }
-            break;
+            break;*/
             default:
             break;
         }
@@ -266,7 +266,7 @@ export default class Filters extends React.PureComponent<FiltersProps> {
             for(j=0;j<filters[i][1].length; j++){
                 if( filters[i][1][j][1] ){
                     switch(filters[i][0]){
-                    case "countries":
+                    /*case "countries":
                         ctrsChips.push(this.generateChips(i,this.minCountryName, filters[i][1][j][0]));
                         break;
                     case "platforms":
@@ -277,16 +277,16 @@ export default class Filters extends React.PureComponent<FiltersProps> {
                         break;
                     case "departements":
                         depChips.push(this.generateChips(i, this.minDepName,filters[i][1][j][0]));
-                        break;
+                        break;*/
                     case "companies":
                         companiesChips.push(this.generateChips(i, this.minCompaName,filters[i][1][j][0]));
                         break;
                     case "equipements":
                         equipementChips.push(this.generateChips(i, this.minEquipName,filters[i][1][j][0]));
                         break;
-                    case "functions":
+                    /*case "functions":
                         functionChips.push(this.generateChips(i, this.minFunctionName,filters[i][1][j][0]));
-                        break;
+                        break;*/
                     /*case "sectors":
                         sectorsChips.push(this.generateChips(i, this.minSectorsName,filters[i][1][j][0]));
                         break;
@@ -331,7 +331,7 @@ export default class Filters extends React.PureComponent<FiltersProps> {
   translateTitle(value){
     let title = "";
     switch(value){
-        case "countries":
+        /*case "countries":
             title = "Pays";
             break;
         case "platforms":
@@ -342,16 +342,16 @@ export default class Filters extends React.PureComponent<FiltersProps> {
             break;
         case "departements":
             title = "Departements";
-            break;
+            break;*/
         case "companies":
             title = "Filiales";
             break;
         case "equipements":
             title = "Equipements"
             break;
-        case "functions":
+        /*case "functions":
             title = "Fonctions"
-            break;
+            break;*/
         /*case "sectors":
             sectorsChips.push(this.generateChips(i, this.minSectorsName,filters[i][1][j][0]));
             break;

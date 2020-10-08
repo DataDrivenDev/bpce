@@ -8,6 +8,7 @@ export default class DashboardService {
     mockEndPoint: string;
 
     constructor(){
+
         this.statisticsEndPoint  = 'https://clients.data-driven.fr/dashboard-v2';
         this.mockEndPoint = 'http://localhost:3001/mockdata';
     }

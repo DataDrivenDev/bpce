@@ -33,12 +33,12 @@ export default class PerfTableStats extends React.PureComponent<PerfTableStatsPr
         text: 'Offres publiées'
       },
       {
-        dataField: 'views',
-        text: 'Consultations',
+        dataField: '',
+        text: 'Sites consultés',
       },
       {
-        dataField: 'nbSiteConsulted',
-        text: 'Sites consultés',
+        dataField: 'views',
+        text: 'Consultations',
       },
       {
         dataField: 'apply',
@@ -75,12 +75,12 @@ export default class PerfTableStats extends React.PureComponent<PerfTableStatsPr
         text: 'Première consultation',
       },
       {
-        dataField: 'views',
-        text: 'Consultations',
+        dataField: '',
+        text: 'Sites consultés',
       },
       {
-        dataField: 'nbSiteConsulted',
-        text: 'Sites consultés',
+        dataField: 'views',
+        text: 'Consultations',
       },
       {
         dataField: 'apply',

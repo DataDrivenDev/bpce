@@ -497,16 +497,16 @@ export default class statLibrary {
                 d = arrEq[i];
                 if(
                     this.filterBySelection(d["Country"],drawer.state.countries)
-                    && this.filterBySelection(d["Support"],drawer.state.serverNames)
+                    /*&& this.filterBySelection(d["Support"],drawer.state.serverNames)*/
                     && this.filterBySelection(d["Societe"],drawer.state.companies)
-                    && this.filterBySelection(d["Fonction"],drawer.state.functions)
+                    /*&& this.filterBySelection(d["Fonction"],drawer.state.functions)*/
                     /*&& this.filterBySelection(d["Secteur"],app.state.sectors)
                     && this.filterBySelection(d["Niveau"],app.state.levels)
                     && this.filterBySelection(d["Experience"],app.state.experiences)*/
-                    && this.filterBySelection(d["RegionNom"], drawer.state.regions)
+                    /*&& this.filterBySelection(d["RegionNom"], drawer.state.regions)*/
                     //&& this.filterBySelection(d["DepartNom"], drawer.state.departements)
-                    && this.filterByKeyWord(drawer.state.titleKeyWord,d["Intitule"])
-                    && this.filterByKeyWord(drawer.state.refKeyWord,d["Ref"])
+                    /*&& this.filterByKeyWord(drawer.state.titleKeyWord,d["Intitule"])
+                    && this.filterByKeyWord(drawer.state.refKeyWord,d["Ref"])*/
                 ){
                   arr.push(d);
                 }

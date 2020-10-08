@@ -48,8 +48,6 @@ export default class BarChart extends React.PureComponent<BarChartProps> {
 
   generateData( annoncePublishedBySupport ){
 
-    const props = this.props.dashboard;
-
     let i = 0, labels = [], colors = [], values = [];
 
     for( i = 0; i < annoncePublishedBySupport.length; i++ ){
@@ -94,7 +92,7 @@ export default class BarChart extends React.PureComponent<BarChartProps> {
               dp = data[prop];
               for( i = 0; i < dp.length; i++ ){
                 dpsub = dp[i][ds];
-                dpsubl = dpsub.length;
+                dpsubl = dpsub !== undefined ? dpsub.length : 0;
                 for(d = 0; d < dpsubl; d++ ){
                   res[s].value += dpsub[d].value;
                 }

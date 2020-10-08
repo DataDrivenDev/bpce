@@ -597,7 +597,7 @@ thead {
 
   .menu-dropdown {
     position: absolute;
-    right: 28px;
+    right: 0%;
     padding: 14px;
   }
 
@@ -1040,8 +1040,16 @@ thead {
 }
 
 .btn-filter-type > .btn-outline-secondary {
- width: 248px !important;
+ width: 445px !important;
 }
+
+.btn-filter-type > .dropdown-menu {
+  width: min-content !important;
+  max-height: 200px;
+  overflow-y: auto;
+ }
+
+
 
 .dropdown-menu {
  width: 248px !important;

@@ -10,13 +10,13 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Paper from '@material-ui/core/Paper';
 
 import Icon from '@mdi/react'
-import { mdiMapMarker,
+import { /*mdiMapMarker,
          mdiMagnify,
-         mdiWeb,
+         mdiWeb,*/
          mdiDomain,
          mdiMonitorCellphoneStar,
-         mdiMapSearch,
-         mdiBriefcaseOutline,
+         /*mdiMapSearch,
+         mdiBriefcaseOutline,*/
          /*mdiFocusField,
          mdiSchoolOutline,
          mdiFileAccountOutline */} from '@mdi/js';
@@ -49,6 +49,7 @@ export default class SideNavBar extends Component<SideNavBarProps,SideNavBarStat
         this.slideOut = this.slideOut.bind(this);
         this.slideIn = this.slideIn.bind(this);
     }
+
 
     clickOnPanel = (index, value) => {
       let panelsExpanded = this.state.panelsExpanded, i = 0;
@@ -83,33 +84,33 @@ export default class SideNavBar extends Component<SideNavBarProps,SideNavBarStat
           <div id={style.drawer} onMouseEnter={this.slideIn} onMouseLeave={this.slideOut}>
               <div className={style.drawerContent }>
                 <List>
-                    <MuiExpansionPanel className={style.panelContainer} expanded={this.state.panelsExpanded[0]} square>
-                    <MuiExpansionPanelSummary  className={style.panelContent}
-                                               expandIcon={ expandIcon }
-                                               onClick={() => this.clickOnPanel(0,this.state.panelsExpanded[0])}
-                                               >
-                        <Icon
-                            path={ mdiMapSearch }
-                            title="Countries"
-                            size={0.80}
-                            horizontal
-                            vertical
-                            rotate={180}
-                            color="black"
-                            className="side-icons"
-                        />
-                        <Typography className={ style.filterlabel +" " + (this.state.drawerToggled ? style.show : style.hide) } variant="overline" display="inline" gutterBottom>Pays</Typography>
-                    </MuiExpansionPanelSummary>
-                    <MuiExpansionPanelDetails className={style.panelDetail} style={{display:"block"}}>
-                        {
-                            this.app.state.countries.map((el) =>
-                                <div className={ this.state.drawerToggled ? style.show : style.hide } key={el} >
-                                    <Switch for="cts" departements={[]} depAndReg = {[]} region="" value={el} checked={el[1]} appRef={this.app} options={this.app.state.countries} />
-                                </div>
-                            )
-                        }
-                    </MuiExpansionPanelDetails>
-                </MuiExpansionPanel>
+                    {/*<MuiExpansionPanel className={style.panelContainer} expanded={this.state.panelsExpanded[0]} square>
+                        <MuiExpansionPanelSummary  className={style.panelContent}
+                                                expandIcon={ expandIcon }
+                                                onClick={() => this.clickOnPanel(0,this.state.panelsExpanded[0])}
+                                                >
+                            <Icon
+                                path={ mdiMapSearch }
+                                title="Countries"
+                                size={0.80}
+                                horizontal
+                                vertical
+                                rotate={180}
+                                color="black"
+                                className="side-icons"
+                            />
+                            <Typography className={ style.filterlabel +" " + (this.state.drawerToggled ? style.show : style.hide) } variant="overline" display="inline" gutterBottom>Pays</Typography>
+                        </MuiExpansionPanelSummary>
+                        <MuiExpansionPanelDetails className={style.panelDetail} style={{display:"block"}}>
+                            {
+                                this.app.state.countries.map((el) =>
+                                    <div className={ this.state.drawerToggled ? style.show : style.hide } key={el} >
+                                        <Switch for="cts" departements={[]} depAndReg = {[]} region="" value={el} checked={el[1]} appRef={this.app} options={this.app.state.countries} />
+                                    </div>
+                                )
+                            }
+                        </MuiExpansionPanelDetails>
+                    </MuiExpansionPanel>
                 <MuiExpansionPanel className="panelContainer" square  expanded={this.state.panelsExpanded[1]}>
                     <MuiExpansionPanelSummary className="panelContent"
                                               expandIcon={ expandIcon }
@@ -172,6 +173,28 @@ export default class SideNavBar extends Component<SideNavBarProps,SideNavBarStat
                                 )
                             }
                         </MuiExpansionPanelDetails>
+                        </MuiExpansionPanel> */}
+                    <MuiExpansionPanel className={style.panelContainer} square expanded={this.state.panelsExpanded[4]} >
+                        <MuiExpansionPanelSummary className={style.panelContent} expandIcon={ expandIcon } onClick={() => this.clickOnPanel(4,this.state.panelsExpanded[4])}>
+                            <Icon
+                                path={mdiMonitorCellphoneStar}
+                                title="Equipments"
+                                size={0.80}
+                                horizontal
+                                vertical
+                                rotate={180}
+                                color="black"
+                                className="side-icons"
+                            />
+                        <Typography className={ style.filterlabel +" " + (this.state.drawerToggled ? style.show : style.hide) } variant="overline" display="inline" gutterBottom>Equipements</Typography>
+                        </MuiExpansionPanelSummary>
+                        <MuiExpansionPanelDetails className={ style.panelDetail +" " + (this.state.drawerToggled ? style.show : style.hide) }>
+                            { this.app.state.equipements.map((el) => 
+                                <div  key={el} className={ this.state.drawerToggled ? style.show : style.hide }>
+                                    <Switch for="equ" value={el} departements={[]} depAndReg = {[]} region="" checked={el[1]} appRef={this.app} options={this.app.state.equipements} /> 
+                                </div>
+                            ) }
+                        </MuiExpansionPanelDetails>
                     </MuiExpansionPanel>
                     <MuiExpansionPanel className={style.panelContainer} square expanded={this.state.panelsExpanded[3]} >
                         <MuiExpansionPanelSummary  className={style.panelContent} expandIcon={ expandIcon } onClick={() => this.clickOnPanel(3,this.state.panelsExpanded[3])} >
@@ -201,29 +224,6 @@ export default class SideNavBar extends Component<SideNavBarProps,SideNavBarStat
                             </Row>
                         </MuiExpansionPanelDetails>
                     </MuiExpansionPanel>
-                    <MuiExpansionPanel className={style.panelContainer} square expanded={this.state.panelsExpanded[4]} >
-                        <MuiExpansionPanelSummary className={style.panelContent} expandIcon={ expandIcon } onClick={() => this.clickOnPanel(4,this.state.panelsExpanded[4])}>
-                            <Icon
-                                path={mdiMonitorCellphoneStar}
-                                title="Equipments"
-                                size={0.80}
-                                horizontal
-                                vertical
-                                rotate={180}
-                                color="black"
-                                className="side-icons"
-                            />
-                        <Typography className={ style.filterlabel +" " + (this.state.drawerToggled ? style.show : style.hide) } variant="overline" display="inline" gutterBottom>Equipements</Typography>
-                        </MuiExpansionPanelSummary>
-                        <MuiExpansionPanelDetails className={ style.panelDetail +" " + (this.state.drawerToggled ? style.show : style.hide) }>
-                            { this.app.state.equipements.map((el) => 
-                                <div  key={el} className={ this.state.drawerToggled ? style.show : style.hide }>
-                                    <Switch for="equ" value={el} departements={[]} depAndReg = {[]} region="" checked={el[1]} appRef={this.app} options={this.app.state.equipements} /> 
-                                </div>
-                            ) }
-                        </MuiExpansionPanelDetails>
-                    </MuiExpansionPanel>
-
                     {/*<MuiExpansionPanel className={style.panelContainer} square expanded={this.state.panelsExpanded[7]} >
                        <MuiExpansionPanelSummary className={style.panelContent} expandIcon={expandIcon} onClick={() => this.clickOnPanel(7,this.state.panelsExpanded[7])}>
                             <Icon
@@ -243,7 +243,7 @@ export default class SideNavBar extends Component<SideNavBarProps,SideNavBarStat
                                 this.app.state.levels.map((el)=><Switch className={ this.state.drawerToggled ? style.show : style.hide } key={el} value={el} color={"primary"} checked={el[1]} appRef={this.app} for="lvl" options={this.app.state.levels} />)
                             }
                         </MuiExpansionPanelDetails>
-                    </MuiExpansionPanel>*/}
+                    </MuiExpansionPanel>
                     <MuiExpansionPanel className={style.panelContainer} square expanded={this.state.panelsExpanded[5]} >
                         <MuiExpansionPanelSummary className={style.panelContent} expandIcon={ expandIcon } onClick={() => this.clickOnPanel(5,this.state.panelsExpanded[5])}>
                             <Icon
@@ -307,7 +307,7 @@ export default class SideNavBar extends Component<SideNavBarProps,SideNavBarStat
                                 this.app.state.experiences.map((el)=><Switch className={ this.state.drawerToggled ? style.show : style.hide } key={el} value={el} color={"primary"} checked={el[1]} appRef={this.app} for="exp" options={this.app.state.experiences} />)
                             }
                         </MuiExpansionPanelDetails>
-                    </MuiExpansionPanel>*/}
+                    </MuiExpansionPanel>
                     <MuiExpansionPanel className={style.panelContainer} square expanded={this.state.panelsExpanded[9]} >
                         <MuiExpansionPanelSummary className={style.panelContent} expandIcon={  expandIcon } onClick={() => this.clickOnPanel(9,this.state.panelsExpanded[9])}>
                             <Icon path={ mdiMagnify }
@@ -339,7 +339,7 @@ export default class SideNavBar extends Component<SideNavBarProps,SideNavBarStat
                                 </Row>
                             </Paper>
                         </MuiExpansionPanelDetails>
-                    </MuiExpansionPanel>
+                        </MuiExpansionPanel> */}
                 </List>
               </div>
           </div>

@@ -112,7 +112,7 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
         // Set the overall data into the state
         this.setState({ setofdata: res, isLoading: false });
         this.context.setData(res);
-        console.log(res);
+        //console.log(res);
         // Sort the data and fill the navigators type array in the state
         this.generateFilterData(((this.state.equipements !== undefined && this.state.equipements.length !== 0) ? this.statsLibrary.sortByEquipment(res, this.state.equipements) : []));
 
@@ -174,9 +174,9 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
           arrOfLevels = this.statsLibrary.sortByProperty(dataBetweenTwoMonths,"Niveau"),
           arrOfExperiences = this.statsLibrary.sortByProperty(dataBetweenTwoMonths,"Experience"),*/
           arrSerName = this.statsLibrary.sortByProperty(dataBetweenTwoMonths,"Support"),
-          depFilterStatusArr = this.statsLibrary.sortByProperty(dataBetweenTwoMonths,"DepartNom"),
-          regFilterStatusArr = this.statsLibrary.sortByProperty(dataBetweenTwoMonths,"RegionNom"),
-          arrOfLocation = this.statsLibrary.sortByLocation(dataBetweenTwoMonths,"RegionNom","DepartNom"),
+          //depFilterStatusArr = this.statsLibrary.sortByProperty(dataBetweenTwoMonths,"DepartNom"),
+          //regFilterStatusArr = this.statsLibrary.sortByProperty(dataBetweenTwoMonths,"RegionNom"),
+          //arrOfLocation = this.statsLibrary.sortByLocation(dataBetweenTwoMonths,"RegionNom","DepartNom"),
           companies = [],
           countries = [],
           equipmnts = [],
@@ -196,7 +196,7 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
       
       //console.log(locationFilteredData);
 
-      let arrStatuses = [depFilterStatusArr,regFilterStatusArr,arrOfCompanies,arrOfCountries,arrOfFunctions,arrSerName].flat(), filterStatuses = [];
+      let arrStatuses = [/*depFilterStatusArr,regFilterStatusArr*/arrOfCompanies,arrOfCountries,arrOfFunctions,arrSerName].flat(), filterStatuses = [];
 
       for( i = 0; i < arrStatuses.length; i++ ){
         if( arrStatuses[i] !== "" && arrStatuses[i] !== null ){
@@ -222,15 +222,15 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
 
       //Let's initialize the countries array for the dedicated filter
 
-      for (i = 0; i < arrOfCountries.length ; i++) {
+      /*for (i = 0; i < arrOfCountries.length ; i++) {
         countries.push([arrOfCountries[i],true]);
-      }
+      }*/
 
       //Let's initialize the functions array for the dedicated filter
 
-      for (i = 0; i < arrOfFunctions.length ; i++) {
+      /*for (i = 0; i < arrOfFunctions.length ; i++) {
         functions.push([arrOfFunctions[i],true]);
-      }
+      }*/
 
       //Let's initialize the sectors array for the dedicated filter
 
@@ -261,9 +261,9 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
 
       //Let's initialize the regions array for the filters
 
-      for (i = 0; i < regFilterStatusArr.length; i++) {
+      /*for (i = 0; i < regFilterStatusArr.length; i++) {
         regions.push([regFilterStatusArr[i],true]);
-      }
+      }*/
 
       //Let's initialize the array for the departements
 
@@ -284,17 +284,17 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
       sectors:sectors,*/
       functions:functions,
       regions : regions,
-      regAndDep : arrOfLocation,
+      //regAndDep : arrOfLocation,
       departements : deps,
       filterStatuses : objFilterStatuses,
       filters : [
-        ["regions",regions],
-        ["departements",deps],
-        ["platforms",sites],
-        ["countries", countries],
+        //["regions",regions],
+        //["departements",deps],
+        //["platforms",sites],
+        //["countries", countries],
         ["companies",companies],
         ["equipements",equipmnts],
-        ["functions",functions],
+        //["functions",functions],
         /*["sectors",sectors],
         ["levels",levels],
         ["experiences",experiences]*/
@@ -311,17 +311,17 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
       sectors:sectors,*/
       functions:functions,
       regions : regions,
-      regAndDep : arrOfLocation,
+      //regAndDep : arrOfLocation,
       departements : deps,
       filterStatuses : objFilterStatuses,
       filters : [
-        ["regions",regions],
-        ["departements",deps],
-        ["platforms",sites],
-        ["countries", countries],
+        //["regions",regions],
+        //["departements",deps],
+        //["platforms",sites],
+        //["countries", countries],
         ["companies",companies],
         ["equipements",equipmnts],
-        ["functions",functions],
+        //["functions",functions],
         /*["sectors",sectors],
         ["levels",levels],
         ["experiences",experiences]*/
@@ -384,12 +384,28 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
     this.setState({ companies: comps, allCompanies: !this.state.allCompanies });
   }
 
+  /*
+  * Main method to filter the setOfData
+  */
+
+ analyse = (drawer, withDateFilter, options) => {
+    let arr = []
+    if(this.state.setofdata.length !== 0){
+      //let t0 = performance.now();
+      arr = this.statsLibrary.filter(withDateFilter,drawer,options);
+      //let t1 = performance.now();
+      //console.log("L'appel à analyse a pris " + (t1 - t0) + " millisecondes.");
+    }
+    return arr;
+  }
+
   render() {
 
     const StatisticsProps = {
       data : (this.state.setofdata !== null && this.state.setofdata.length === 0) ? this.context.setofdata : this.state.setofdata,
       drawer: this,
-      filters :this.state.filters
+      filters :this.state.filters,
+      dataAnalysed : this.analyse(this,true, Cookies.get('ddoptions'))
     }
 
     return (

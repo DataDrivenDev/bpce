@@ -64,7 +64,7 @@ export default class SumUp extends React.PureComponent<SumUpProps> {
         }
       }
     }
-    console.log(nb);
+    //console.log(nb);
 
     return nb;
   }

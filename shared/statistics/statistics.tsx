@@ -9,11 +9,10 @@ import MonthBox  from '../monthbox/MonthBox';
 import statsLibrary from '../stats/sort_data';
 import InfoSiteService from '../../services/infosites/services';
 import BarChart from './BarChart/BarChart';
+import BarChartByCompany from './BarChartByCompany/BarChartByCompany';
 //import ByMonthChart from '../statistics/BarChart/ByMonthChart';
-import BarChartBySelection from './BarChartBySelection/BarChartBySelection';
 import PerfTableStats  from './table/PerfTableStats';
 import BlogTableStats  from './table/ContentSiteTableStats';
-import CostTableStats  from './table/CostTableStats';
 import SumUp  from './sumup/SumUp';
 import * as Cookies from "js-cookie";
 
@@ -25,6 +24,7 @@ import style from "./statistics.module.css";
 interface  StatisticsProps {
   drawer : any,
   filters : any
+  dataAnalysed : Array<any>
 }
 
 interface  StatisticsState {
@@ -34,7 +34,7 @@ interface  StatisticsState {
   showFilterStatus : boolean,
   barChartSelectedProp : string,
   barChartMonthSelectedProp : string,
-  barChartSelectedFilter : string,
+  barChartSelectedCompany : string,
   simpleBarChartDataType : string,
   simpleBarChartDataProp : Array<string>,
   barChartDataType : string,
@@ -70,14 +70,14 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
       showFilterStatus : false,
       barChartSelectedProp : "RegionNom",
       barChartMonthSelectedProp : "RegionNom",
-      barChartSelectedFilter : "regions",
-      simpleBarChartDataType : "consultation",
-      simpleBarChartDataProp : ["nbofjobofferpublished","consultation","apply","completed", "entretien","hired","gencompleted", "genentretien", "genhired" ,"costconsultation","costapply","costcompleted" ],
-      barChartDataType : "consultation",
-      barChartMonthDataType : "consultation",
-      barChartDataProp : ["nbofjobofferpublished","consultation","apply","completed", "entretien","hired","gencompleted", "genentretien", "genhired" ,"costconsultation","costapply","costcompleted" ],
-      barChartMonthSelectedFilter : "regions",
-      barChartMonthDataProp : ["nbofjobofferpublished","consultation","apply","completed", "entretien","hired","gencompleted", "genentretien", "genhired" ,"costconsultation","costapply","costcompleted" ],
+      barChartSelectedCompany : "BPCE SA",
+      simpleBarChartDataType : "apply",
+      simpleBarChartDataProp : ["apply","completed","hired","gencompleted", "genhired"],
+      barChartDataType : "apply",
+      barChartMonthDataType : "apply",
+      barChartDataProp : ["apply","completed","hired","gencompleted", "genhired" ],
+      barChartMonthSelectedFilter : "companies",
+      barChartMonthDataProp : ["apply","completed","hired","gencompleted", "genhired" ],
       dropdownBarCharSelectionOpen : false,
       show:false
     };
@@ -150,39 +150,8 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
     this.setState({ dropdownBarCharSelectionOpen : !this.state.dropdownBarCharSelectionOpen});
   }
 
-  changeSelectedFilter = (filterName) => {
-
-    let filter = "";
-
-    switch(filterName) {
-      case "regions":
-        filter = "RegionNom";
-        break;
-      case "departements":
-        filter = "DepartNom";
-        break;
-      case "platforms" :
-        filter = "Support";
-        break;
-      case "countries":
-        filter = "Country";
-        break;
-      case "companies":
-        filter = "Societe";
-        break;
-      case "equipements":
-        filter = "Equipement";
-        break;
-      case "functions":
-        filter = "Fonction";
-        break;
-      default :
-        filter = "Support";
-        break;
-    }
-
-    this.setState({ barChartSelectedProp: filter, barChartSelectedFilter: filterName });
-
+  changeSelectedCompany = (company) => {
+    this.setState({ barChartSelectedCompany: company });
   }
 
   simpleChangeSelectedData = ( prop ) => {
@@ -233,22 +202,22 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
         newText = "Annonces publiées";
         break;
       case "apply" :
-        newText = "Candidatures"
+        newText = "Candidatures initiée"
         break;
       case "consultation" :
         newText = "Consultations"
         break;
       case "completed" :
-        newText = "CV directs"
+        newText = "Candidatures finalisée"
         break;
       case "entretien" :
         newText = "Entretiens directs"
         break;
       case "hired" :
-        newText = "Embauches directes"
+        newText = "Embauches"
         break;
       case "gencompleted" :
-        newText = "CV indirects"
+        newText = "Candidatures indirectes"
         break;
       case "genentretien" :
         newText = "Entretiens indirects"
@@ -335,18 +304,6 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
     return [nbSelected,nbOfFilter];
   }
 
-  /*
-  * Main method to filter the setOfData
-  */
-
-  analyse = (drawer, withDateFilter, options) => {
-    let arr = []
-    /*let t0 = performance.now();*/
-    arr = this.statsLibrary.filter(withDateFilter,drawer,options);
-    /*let t1 = performance.now();
-    console.log("L'appel à analyse a pris " + (t1 - t0) + " millisecondes.");*/
-    return arr;
-  }
 
   toggleFilterSelectedPanel = () => {
     this.setState({filterSelectedPanelOpen : !this.state.filterSelectedPanelOpen});
@@ -359,14 +316,14 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
 
   render(){
 
-    const dataAnalysed = this.props.drawer.state.setofdata.length !== 0 ? this.analyse(this.props.drawer,true, Cookies.get('ddoptions')) : [],
+    const dataAnalysed = this.props.drawer.state.setofdata.length !== 0 ? this.props.dataAnalysed : [],
         dataFilteredByMonth = dataAnalysed[0],
         //filterStatuses = dataAnalysed[1],
         dataFilteredByMonthAndBySupport = this.statsLibrary.groupBySupport(dataFilteredByMonth),
         dataFilteredBySelection1 = this.statsLibrary.groupBySupport(this.statsLibrary.groupBySelection(dataFilteredByMonth,this.state.barChartSelectedProp));
         //dataFilteredBySelection2 = this.statsLibrary.groupBySelection(dataFilteredByMonth,this.state.barChartMonthSelectedProp);
-
         //console.log(this.state.infoCostType);
+
     
     const sumUpProps = {
 
@@ -386,13 +343,6 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
     ,statsProps = {
       app: this.props.drawer,
       data: dataFilteredByMonthAndBySupport,
-    },
-    barChartBySelectionProps = {
-      drawer: this.props.drawer,
-      data: dataFilteredBySelection1, 
-      info: this.state.infoColor,
-      selectedFilter: this.state.barChartSelectedFilter, 
-      selectedDataType: this.state.barChartDataType
     }
 
     const pickerLang = {
@@ -503,7 +453,7 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
                 <hr className="divider" />
                 <Row>
                   <Col xs="12" sm="12" md="12">
-                    <Typography className="title" variant="overline" display="block" gutterBottom > { this.formatDataType(this.state.barChartDataType) +" par "+ this.formatFilter(this.state.barChartSelectedFilter) }  </Typography>
+                    <Typography className="title" variant="overline" display="block" gutterBottom > { this.formatDataType(this.state.barChartDataType) +" pour "+ this.state.barChartSelectedCompany }  </Typography>
                   </Col>
                 </Row>
                 <Row>
@@ -512,13 +462,13 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
                        <DropdownButton  variant="outline-secondary" className="btn-data-type" drop="down" title={ this.formatDataType(this.state.barChartDataType) } >
                          { this.state.barChartDataProp.map((dataType) => dataType !== this.state.barChartDataType ? <Dropdown.Item key={dataType} as="button" onClick={() => this.changeSelectedData(dataType)} >{this.formatDataType(dataType)}</Dropdown.Item> : null)}
                        </DropdownButton>
-                       <DropdownButton  variant="outline-secondary" className="btn-filter-type" drop="down" title={ this.formatFilter(this.state.barChartSelectedFilter) } >
-                         { this.props.drawer.state.filters.map((filter) => filter[0] !== this.state.barChartSelectedFilter && filter[0] === "companies" ? <Dropdown.Item key={filter[0]} as="button" onClick={() => this.changeSelectedFilter(filter[0])} >{this.formatFilter(filter[0])}</Dropdown.Item> : null)}
+                       <DropdownButton  variant="outline-secondary" className="btn-filter-type" drop="down" title={ this.state.barChartSelectedCompany } >
+                         { this.props.drawer.state.companies.map((company) =>  <Dropdown.Item key={company[0]} as="button" onClick={() => this.changeSelectedCompany(company[0])} >{company[0].toUpperCase()}</Dropdown.Item>)}
                        </DropdownButton>
                      </div>
                      <div style={{marginTop:"100px"}}>
-                        <BarChartBySelection { ...barChartBySelectionProps }  />
-                     </div>
+                          <BarChartByCompany drawer={this.props.drawer} dashboard={this} data={dataFilteredByMonthAndBySupport} info={this.state.infoColor}  selectedDataType={this.state.barChartDataType} selectedCompany={this.state.barChartSelectedCompany} />
+                       </div>
                    </Col>
                </Row>
                <hr className="divider" />
