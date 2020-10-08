@@ -7,7 +7,7 @@
     "export": "next export",
     "build": "next build && next export",
     "start": "next start",
-    "deploy": "pm2 deploy ecosystem.config.js production setup"
+    "deploy": "pm2 deploy ecosystem.config.js development setup"
   },
   "dependencies": {
     "axios": "^0.20.0",
