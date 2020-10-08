@@ -1,0 +1,60 @@
+.dateFilter{
+    font-style: italic;
+}
+
+.closingOptions {
+    border: none !important;
+    background-color: white;
+}
+
+.boxfilter {
+  font-size:11px;
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 20px;
+}
+
+.filterlabel {
+  width:100%;
+  padding: 1%;
+  margin : 1%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (max-width: 600px) {
+  .filterlabel {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .boxfilter {
+    max-height: none;
+  }
+}
+
+.filtericon:hover {
+  color:red;
+  cursor:pointer;
+}
+
+.chipses {
+  padding: 1%;
+  max-height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.boxtitle
+{
+  padding: 5%;
+  text-align: center;
+  background: url('../../assets/img/svg/triangles-1430105.svg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color:white;
+  font-weight: bold !important;
+}
+

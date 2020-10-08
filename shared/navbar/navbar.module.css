@@ -1,0 +1,17 @@
+.navbar {
+    background: url('../../assets/img/svg/triangles-1430105.svg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.link {
+    color: white !important;
+}
+
+.clientcorporatename
+{
+    margin:10px 60px 10px 15px; 
+    color:white;
+    font-weight:bold;
+}

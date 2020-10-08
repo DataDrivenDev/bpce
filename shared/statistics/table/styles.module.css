@@ -1,0 +1,25 @@
+.csvExportBtn {
+    background-color: white!important;
+    color: black !important;
+    border: 1px solid lightgrey !important;
+    font-family: Open Sans, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.84em !important;
+    box-shadow: none !important;
+}
+
+.csvExportBtn:hover{
+    background-color: rgb(0, 119, 181) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    border: 1px solid white !important;
+}
+
+.ddtable {
+    overflow: auto;
+    display: block;
+    table-layout: auto;
+    font-size: 0.70em !important;
+}
+
+

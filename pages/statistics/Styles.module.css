@@ -1,0 +1,174 @@
+.makeStyles-toolbar-9 {
+   min-height: 0px !important;
+}
+
+.MuiExpansionPanelSummary-root {
+  border:none !important;
+}
+
+.MuiIconButton-edgeStart {
+   padding:0px 0px 0px 0px !important;
+}
+
+.makeStyles-drawerClose-6 {
+   width: 56px !important;
+}
+
+.makeStyles-toolbar-7 {
+   min-height: 44px !important;
+}
+
+.MuiList-padding {
+   padding-top: 0px !important;
+   padding-bottom: 0px !important;
+}
+
+/*CSS overload*/
+.MuiDrawer-paper {
+   z-index: 500 !important;
+}
+.makeStyles-drawerClose-8 {
+   width: 55px !important;
+}
+
+.MuiPaper-elevation1 {
+   box-shadow: none !important;
+}
+.MuiDivider-root {
+   height:0px !important;
+}
+.MuiExpansionPanelSummary-root > .MuiSvgIcon-root {
+   color:black !important;
+}
+
+.MuiList-padding {
+   padding-top: 25px;
+   padding-bottom: 8px;
+}
+.MuiFormControlLabel-root {
+   margin-left: -13px !important;
+   margin-right: -16px !important;
+}
+.chartjs-render-monitor {
+   background-color: white !important;
+
+}
+.MuiToolbar-regular {
+   min-height: 44px !important;
+}
+.title {
+   font-family: 'Josefin Sans', sans-serif ;
+   font-size: 1.5em !important;
+   text-align: center;
+}
+
+.MuiExpansionPanelSummary-content {
+   font-family: 'Josefin Sans', sans-serif !important;
+   font-size: 1em !important;
+}
+
+.MuiTypography-overline{
+   font-family: 'Josefin Sans', sans-serif !important;
+}
+
+.filters{
+   font-family: 'Josefin Sans', sans-serif !important;
+   padding: 0px 0px 0px 75px;
+}
+
+.numbers {
+   font-family: 'Open Sans', sans-serif;
+}
+
+.selectedFilters {
+   background-color: white;
+   width:100%;
+   margin-top: 4%;
+   margin-bottom: 2%;
+   border-radius: 10px;
+   padding: 2%;
+}
+
+.toggleFilterIcon > .MuiIconButton-edgeEnd {
+   margin-top: -3px;
+}
+.removeAllFilter {
+   position: absolute;
+   right: 0;
+}
+
+.dash-title-container {
+  width:88%;
+  margin-bottom:10px;
+}
+
+.month-picker-container {
+  width:45.5%;
+  margin-bottom:10px;
+  margin-top:22px;
+  margin-left:45%;
+  text-align:right;
+  cursor:pointer
+}
+.filter-counter-container {
+  padding:2%;
+}
+
+.filter-counter {
+  text-align:right;
+}
+
+.vertical-space {
+  margin-top: 50px;
+}
+
+.react-datepicker__input-container > input {
+   text-align:center;
+}
+.filterlabel {
+   font-size: 13px;
+}
+
+.blockTitle {
+   font-size: 17px;
+}
+
+.filterBtnContainer {
+  border-top-right-radius:  15px;
+  border-bottom-right-radius:  15px;
+  background-color: #f9f9f9;
+  width: 20px;
+  top: 45%;
+  left: 0px;
+  position: fixed;
+  cursor:pointer;
+  height: 60px;
+  border: 1px solid rgba(0,0,0,0.1);
+  transition: 1s;
+}
+
+.filterBtnContainer:hover {
+  background-color: rgba(0,0,0,0.04) !important;
+  width: 30px;
+  transition: 1s;
+}
+
+.filterBtnContainer:hover > .filterArrow {
+   left: 12px;
+   transition: 1s;
+}
+
+.legend {
+   margin-top: 15px !important;
+}
+
+.filterArrow {
+  top:45%;
+  left: 2px;
+  position: fixed;
+  display: flex;
+  font-size: 35px;
+  color: black;
+  transition: 1s;
+}
+

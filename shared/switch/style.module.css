@@ -1,0 +1,54 @@
+
+.switchcontainer {
+  font-family: Open Sans, sans-serif;
+  font-weight: 400;
+  font-size: 0.84em;
+  padding-bottom: 10px !important;
+}
+.arrowUpLoc {
+  transform: rotate(90deg);
+  transition: 1s;
+}
+.arrowUpLoc:hover {
+  transform: rotate(0deg);
+  transition: transform 1s;
+  cursor: pointer;
+  background-color:rgba(0,0,0,0.05);
+  border-radius:  10px;
+}
+.arrowDownLoc {
+  transform: rotate(0deg);
+  background-color:rgba(0,0,0,0.05);
+  border-radius:  10px;
+  transition: 3s;
+}
+.arrowDownLoc:hover {
+  cursor :pointer;
+}
+
+.status {
+  margin-top: 7px;
+}
+
+.activefilter {
+  width: 7px;
+  height: 7px;
+  border-radius: 9px;
+  background-color: #2E8B57;
+}
+
+.depactivefilter {
+
+  width: 7px;
+  height: 7px;
+  border-radius: 9px;
+  background-color: #90EE90;
+}
+
+.notactivefilter {
+  width: 7px;
+  height: 7px;
+  border: 1px solid lightgrey;
+  border-radius: 9px;
+}
+

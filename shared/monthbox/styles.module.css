@@ -1,0 +1,16 @@
+.box {
+  position: fixed;
+  right: 1%;
+  top: 4px;
+  z-index: 1030;
+  left: unset;
+  width: 60px;
+  height: 60px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.box:hover {
+  background-color: transparent;
+  border-radius: 2px;
+}

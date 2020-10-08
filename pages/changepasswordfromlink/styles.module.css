@@ -1,0 +1,76 @@
+.background {
+    background-image: url("https://data-driven.fr/images/blonde_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+.toolBar {
+  /*background: url('../../assets/img/triangles-1430105.svg') no-repeat center center fixed;*/
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: none !important;
+  height: 72px;
+}
+
+.upperloginformcontainer {
+    width: 0%;
+    height: 100%;
+    background-color: hsla(210, 1%, 99%, 0.25);
+    color: black;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-name: contslidein;
+    animation-fill-mode:forwards;
+    padding-left: 5%;
+    padding-top: 15%; 
+}
+
+.loginformcontainer {
+    width: 50%;
+    animation-duration: 4s;
+    animation-name: logslidein;
+    animation-fill-mode:forwards;
+    position: absolute;
+}
+
+@keyframes contslidein {
+    from {
+        width: 0%; 
+    }
+    to {
+        width: 50%;
+    }
+}
+
+@keyframes logslidein {
+    from {
+        margin-left: -50%; 
+    }
+    to {
+        margin-left: 2%;
+    }
+}
+
+.loginform {
+    position: relative;
+    width: 430px;
+    text-align: center;
+}
+
+.loginbtn {
+    width:100%;
+}
+
+.sendemailbtn {
+    width:100%;
+}
+
+.changepassbtn {
+    width:100%;
+}
+
