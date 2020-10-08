@@ -37,6 +37,10 @@ export default class PerfTableStats extends React.PureComponent<PerfTableStatsPr
         text: 'Consultations',
       },
       {
+        dataField: 'nbSiteConsulted',
+        text: 'Sites consultés',
+      },
+      {
         dataField: 'apply',
         text: 'Candidatures initiées',
       },
@@ -73,6 +77,10 @@ export default class PerfTableStats extends React.PureComponent<PerfTableStatsPr
       {
         dataField: 'views',
         text: 'Consultations',
+      },
+      {
+        dataField: 'nbSiteConsulted',
+        text: 'Sites consultés',
       },
       {
         dataField: 'apply',

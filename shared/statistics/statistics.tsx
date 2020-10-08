@@ -513,7 +513,7 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
                          { this.state.barChartDataProp.map((dataType) => dataType !== this.state.barChartDataType ? <Dropdown.Item key={dataType} as="button" onClick={() => this.changeSelectedData(dataType)} >{this.formatDataType(dataType)}</Dropdown.Item> : null)}
                        </DropdownButton>
                        <DropdownButton  variant="outline-secondary" className="btn-filter-type" drop="down" title={ this.formatFilter(this.state.barChartSelectedFilter) } >
-                         { this.props.drawer.state.filters.map((filter) => filter[0] !== this.state.barChartSelectedFilter && filter[0] !== "platforms" && filter[0] !== "equipements" ? <Dropdown.Item key={filter[0]} as="button" onClick={() => this.changeSelectedFilter(filter[0])} >{this.formatFilter(filter[0])}</Dropdown.Item> : null)}
+                         { this.props.drawer.state.filters.map((filter) => filter[0] !== this.state.barChartSelectedFilter && filter[0] === "companies" ? <Dropdown.Item key={filter[0]} as="button" onClick={() => this.changeSelectedFilter(filter[0])} >{this.formatFilter(filter[0])}</Dropdown.Item> : null)}
                        </DropdownButton>
                      </div>
                      <div style={{marginTop:"100px"}}>
