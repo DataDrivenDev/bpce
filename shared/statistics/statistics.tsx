@@ -202,13 +202,13 @@ export default class Statistics extends Component< StatisticsProps, StatisticsSt
         newText = "Annonces publiées";
         break;
       case "apply" :
-        newText = "Candidatures initiée"
+        newText = "Candidatures initiées"
         break;
       case "consultation" :
         newText = "Consultations"
         break;
       case "completed" :
-        newText = "Candidatures finalisée"
+        newText = "Candidatures finalisées"
         break;
       case "entretien" :
         newText = "Entretiens directs"
