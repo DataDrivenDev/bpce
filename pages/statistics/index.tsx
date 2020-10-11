@@ -19,30 +19,30 @@ interface DrawerProps {
 }
 
 interface DrawerState {
-      drawerToggled: boolean,
-      filterStatuses:Array<any>,
-      filters:Array<any>,
-      serverNames:Array<any>,
-      labels:Array<any>,
-      regions:Array<any>,
-      departements:Array<any>,
-      companies:Array<any>,
-      countries:Array<any>,
-      equipements:Array<any>,
-      mrange: any,
-      functions:Array<any>,
-      sectors:Array<any>,
-      levels:Array<any>,
-      experiences:Array<any>,
-      regAndDep:Array<any>,
-      setofbudjet:Array<any>,
-      setofdata:Array<any>,
-      dataSortedByEquipements:Array<any>,
-      allLocation:boolean,
-      allCompanies:boolean,
-      refKeyWord:string,
-      titleKeyWord:string,
-      isLoading:boolean
+    drawerToggled: boolean,
+    filterStatuses:Array<any>,
+    filters:Array<any>,
+    serverNames:Array<any>,
+    labels:Array<any>,
+    regions:Array<any>,
+    departements:Array<any>,
+    companies:Array<any>,
+    countries:Array<any>,
+    equipements:Array<any>,
+    mrange: any,
+    functions:Array<any>,
+    sectors:Array<any>,
+    levels:Array<any>,
+    experiences:Array<any>,
+    regAndDep:Array<any>,
+    setofbudjet:Array<any>,
+    setofdata:Array<any>,
+    dataSortedByEquipements:Array<any>,
+    allLocation:boolean,
+    allCompanies:boolean,
+    refKeyWord:string,
+    titleKeyWord:string,
+    isLoading:boolean
 }
 
 
@@ -53,6 +53,7 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
 
   statsLibrary: any;
   subscriptionService: any;
+  isComputing : boolean;
 
   constructor(props) {
     super(props);
@@ -82,6 +83,7 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
       titleKeyWord:"",
       isLoading:true
     };
+    this.isComputing = false;
     this.statsLibrary = new StatsLibrary();
     this.subscriptionService = new Subscriptions();
     this.toggleAllLocationsBtn = this.toggleAllLocationsBtn.bind(this);
@@ -389,13 +391,17 @@ export default class Drawer extends React.Component<DrawerProps, DrawerState> {
   */
 
  analyse = (drawer, withDateFilter, options) => {
-    let arr = []
+    this.isComputing = true;
+    console.log("start computing");
+    let arr = [];
     if(this.state.setofdata.length !== 0){
       //let t0 = performance.now();
       arr = this.statsLibrary.filter(withDateFilter,drawer,options);
       //let t1 = performance.now();
       //console.log("L'appel à analyse a pris " + (t1 - t0) + " millisecondes.");
     }
+    this.isComputing = false;
+    console.log("stop computing");
     return arr;
   }
 
