@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[22],{"08SE":function(n,w,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/login",function(){return o("0jUE")}])}},[["08SE",0,2,7,1,3,5,4,6,11]]]);
