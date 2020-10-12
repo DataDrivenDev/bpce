@@ -83,7 +83,7 @@ export default class SumUp extends React.PureComponent<SumUpProps> {
     if( this.props.app.state.equipements[0][1] || this.props.app.state.equipements[1][1] ){
 
       for( const prop in dataToAnalyse ){
-        if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog" && this.props.siteCostType[prop] !== 1){
+        if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog"){
           values.push(dataToAnalyse[prop].length);
           nbTotal += dataToAnalyse[prop].length;
           labels.push(prop);
@@ -127,7 +127,7 @@ export default class SumUp extends React.PureComponent<SumUpProps> {
 
     for( const prop in dataToAnalyse ){
 
-      if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog" && this.props.siteCostType[prop] !== 1 ){
+      if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog" ){
         labels.push(prop);
         supportData = dataToAnalyse[prop];
         nbAppliesDivByNbOffPub = 0;
@@ -161,7 +161,7 @@ export default class SumUp extends React.PureComponent<SumUpProps> {
 
     for( const prop in dataToAnalyse ){
 
-      if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog" && this.props.siteCostType[prop] !== 1 ){
+      if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog" ){
         labels.push(prop);
         supportData = dataToAnalyse[prop];
         applies = 0;
@@ -179,7 +179,7 @@ export default class SumUp extends React.PureComponent<SumUpProps> {
           }
         }
       }
-      if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog" && this.props.siteCostType[prop] !== 1 ){
+      if( this.props.siteCostType !== null && dataToAnalyse[prop][0].SupportType !== "Site Carrière" && dataToAnalyse[prop][0].SupportType !== "Blog" ){
         values.push(applies);
       }
     }
