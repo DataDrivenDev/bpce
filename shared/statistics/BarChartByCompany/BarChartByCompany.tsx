@@ -62,29 +62,32 @@ export default class BarChartByCompany extends React.PureComponent<BarChartByCom
 
   fill(){
 
-    let data = this.props.data, prop = "", s = 0, i = 0, d = 0, res = [], sum = 0, ds = this.props.selectedDataType,
+    let data = this.props.data, prop = "", s = 0, i = 0, d = 0, res = [], ds = this.props.selectedDataType,
         dp = null, dpsub = null, sn = this.props.drawer.state.serverNames, dpsubl = 0;
-    
+
+        console.log(data);
         console.log(ds);
 
+        console.log(this.props.selectedCompany);
+
     for( s = 0; s < sn.length; s++ ) {
-        res.push({ support : sn[s][0], value : 0 });
-        for( prop in data ) {
+      res.push({ support : sn[s][0], value : 0 });
+      for( prop in data ) {
         if(prop === sn[s][0]){
-            dp = data[prop];
-            for( i = 0; i < dp.length; i++ ){
-            if(dp[i]["Societe"].toUpperCase() === this.props.selectedCompany ){
-                dpsub = dp[i][ds];
-                dpsubl = dpsub !== undefined ? dpsub.length : 0;
-                for(d = 0; d < dpsubl; d++ ){
+          dp = data[prop];
+          for( i = 0; i < dp.length; i++ ){
+            
+            if(dp[i]["Societe"].toUpperCase() === this.props.selectedCompany.toUpperCase() ){
+              dpsub = dp[i][ds];
+              dpsubl = dpsub !== undefined ? dpsub.length : 0;
+              for(d = 0; d < dpsubl; d++ ){
                 res[s].value += dpsub[d].value;
-                }
+              }
             }
-            }
+          }
         }
-        }
+      }
     }
-      
     return res;
   }
 
@@ -92,13 +95,13 @@ export default class BarChartByCompany extends React.PureComponent<BarChartByCom
     this.info = this.props.info !== null ? this.props.info : {};
     let annoncePublishedBySupport = this.fill(),
         d = this.generateData(annoncePublishedBySupport),
-        l = d[0].length * 50,
-        datasets = [{ label:d[1][0], data:d[1][1], backgroundColor:d[2] }];
+        l = d[0].length * 50;
 
     let data = {
       labels: d[0],
       datasets : [{ label:d[1][0], data:d[1][1], backgroundColor:d[2] }]
     };
+
     return  l !== 0 ? <HorizontalBar data={data} width={100} height={500} options={this.options}/> : null;
   }
 }
