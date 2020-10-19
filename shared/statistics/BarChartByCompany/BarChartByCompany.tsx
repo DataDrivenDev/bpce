@@ -65,18 +65,12 @@ export default class BarChartByCompany extends React.PureComponent<BarChartByCom
     let data = this.props.data, prop = "", s = 0, i = 0, d = 0, res = [], ds = this.props.selectedDataType,
         dp = null, dpsub = null, sn = this.props.drawer.state.serverNames, dpsubl = 0;
 
-        console.log(data);
-        console.log(ds);
-
-        console.log(this.props.selectedCompany);
-
     for( s = 0; s < sn.length; s++ ) {
       res.push({ support : sn[s][0], value : 0 });
       for( prop in data ) {
         if(prop === sn[s][0]){
           dp = data[prop];
           for( i = 0; i < dp.length; i++ ){
-            
             if(dp[i]["Societe"].toUpperCase() === this.props.selectedCompany.toUpperCase() ){
               dpsub = dp[i][ds];
               dpsubl = dpsub !== undefined ? dpsub.length : 0;
